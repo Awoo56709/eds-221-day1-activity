@@ -3,3 +3,53 @@ title: "stl_lead_inquality"
 format: html
 ---
 
+```{r}
+library(janitor)
+library(tidyverse)
+```
+
+```{r}
+stl_lead <- read_csv(here::here("data","stl_blood_lead.csv")) |>
+  clean_names()
+```
+```{r}
+rm(list = ls())
+stl_lead <- read_csv(here::here("data","stl_blood_lead.csv"))
+stl_lead <- stl_lead |>
+  clean_names()
+names(stl_lead)
+```
+```{r}
+stl_lead_prop <- stl_lead|>
+  mutate(prop_white = (white/total_pop) * 100)
+
+dim(stl_lead)
+names(stl_lead_prop)
+```
+
+```{r}
+mutate(stl_lead, prop_white = (white/total_pop)*100)
+```
+
+```{r}
+# Basic summary
+summary(stl_lead)
+
+# Glimpse structure
+glimpse(stl_lead)
+
+# Visualize distribution of lead tests
+ggplot <- # Basic summary
+summary(stl_lead)
+
+# Glimpse structure
+glimpse(stl_lead)
+
+# Visualize distribution of lead tests
+ggplot(stl_lead, aes(x = pct_elevated)) +
+  geom_histogram(binwidth = 1, fill = "steelblue", color = "white") +
+  labs(title = "Distribution of High Lead Tests", x = "High Tests", y = "Count")
+
+ggplot
+```
+
